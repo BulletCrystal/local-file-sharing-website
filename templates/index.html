@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Private DataBase</title>
+    <meta name="viewport" content="initial-scale=1">
+    <style>
+        h1 {
+            font-family:'Times New Roman', Times, serif;
+            color: rgb(255, 230, 0);
+            text-align: center;
+            font-size: 50px;
+            border-color: rgb(255, 159, 81);
+            border-style: solid;
+            box-shadow: 0 0 40px;
+        }
+
+        h2 {
+            color: rgb(105, 0, 0);
+            text-align: center;
+            font-family: 'calibri';
+            font-size: 30px;
+            
+            
+        }
+
+        body {
+            background-color: rgb(129, 104, 65);
+        }
+
+        div.section {
+            background-color: rgba(25, 58, 85, 0.767);
+            display: grid;
+            grid-template-columns: auto auto;
+            padding: 10px;
+            box-shadow: 0px 20px 40px;
+            font-family: Calibri;
+            border-radius: 10px;
+            
+        }
+
+        div.Downloads {
+            background-color: rgb(204, 153, 71);
+            
+
+        }
+
+        div.Upload {
+            background-color: rgb(204, 153, 71);
+            text-align-last: center;
+            border: 10px;
+            
+
+        }
+
+        ul {
+            margin: 0 auto;
+            width: 50%;
+            
+        }
+
+        @media screen and (max-width: 767px) {
+
+
+            div.section {
+                display: block;
+                margin: 5px;
+            }
+            h2{
+                font-size: 30px;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                background-color: rgb(255, 255, 255);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Menu</h1>
+    <div class="section">
+        <div class="Upload">
+            <h2>Upload a file:</h2>
+            <form action="/order" method="POST" enctype="multipart/form-data">
+                <br>
+                <input type="file" name="file" id="file" style="margin-bottom: 20px;">
+                <br>
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        <div class="Downloads">
+            <h2>Available Downloads:</h2>
+            <ul id="downloads">
+                {% for file in files %}
+                    <li><a href="/download?filename={{ file }}">{{ file }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
